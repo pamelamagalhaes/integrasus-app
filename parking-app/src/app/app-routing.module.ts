@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './pages/auth/guards';
-import { ListaComponent } from './pages/cadastro/medico/lista/lista.component';
 
 const routes: Routes = [
   {
@@ -20,6 +19,26 @@ const routes: Routes = [
         (m) => m.CadastroMedicoModule
       ),
   },
+  {
+    path: 'cadastro/paciente',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/cadastro/paciente/cadastro-paciente.module').then(
+        (m) => m.CadastroPacienteModule
+      ),
+  },
+  {
+    path: 'triagem',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/triagem/triagem.module').then((m) => m.TriagemModule),
+  },
+  // {
+  //   path: 'fila',
+  //   canActivate: [AuthGuard],
+  //   loadChildren: () =>
+  //     import('./pages/fila/fila.module').then((m) => m.FilaModule),
+  // },
   {
     path: 'typography',
     pathMatch: 'full',

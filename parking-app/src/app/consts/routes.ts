@@ -9,4 +9,8 @@ export enum routes {
   LOGIN = '/login',
   CADASTRO_MEDICO_LISTA = '/cadastro/medico/lista',
   CADASTRO_MEDICO_PROFILE = '/cadastro/medico/profile',
+  CADASTRO_PACIENTE_LISTA = '/cadastro/paciente/lista',
+  CADASTRO_PACIENTE_PROFILE = '/cadastro/paciente/profile',
+  TRIAGEM = '/triagem',
+  FILA = '/fila/components',
 }
