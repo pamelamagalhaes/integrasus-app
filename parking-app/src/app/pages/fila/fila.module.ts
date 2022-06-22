@@ -1,21 +1,52 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
-import { TablesPageComponent } from './containers';
+//import { SharedModule } from '../../../shared/shared.module';
+import { RouterModule, Routes } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FilaService } from './fila.service';
+import { FilaComponent } from './component/fila.components';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: TablesPageComponent
-  }
+    component: FilaComponent,
+  },
+
 ];
 
 @NgModule({
+  declarations: [FilaComponent],
   imports: [
-    RouterModule.forChild(routes)
+    MatMenuModule,
+    MatTableModule,
+    CommonModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    SharedModule,
+    RouterModule.forChild(routes),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [FilaService],
 })
+export class FilaModule {}
 
-export class TablesRoutingModule {
-}

@@ -33,6 +33,7 @@ export class DetalheComponent implements OnInit {
   ];
 
   public supportRequestData$: Observable<TriagemModel[]>;
+  triagemForm: any;
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
@@ -66,23 +67,23 @@ export class DetalheComponent implements OnInit {
   }
 
   public onSubmit() {
-    if (this.cadastroForm.valid) {
-      this.cadastroForm.reset();
+    if (this.triagemForm.valid) {
+      this.triagemForm.reset();
     }
 
-    this.service.create(this.cadastroForm.value);
+    this.service.create(this.triagemForm.value);
 
-    this.router.navigate([this.routers.CADASTRO_MEDICO_LISTA], {
+    this.router.navigate([this.routers.TRIAGEM], {
       relativeTo: this.route,
     });
   }
   public buildForm() {
-    this.cadastroForm = this.fb.group({
+    this.triagemForm = this.fb.group({
       nome: ['', [Validators.required]],
       idade: ['', [Validators.required, CustomValidators.validateCharacters]],
-      sexo: ['', [Validators.required, Validators.email]],
-      cpf: ['', [Validators.required, Validators.email]],
-      profissao: ['', [Validators.required, CustomValidators.validatessn]],
+      sexo: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      profissao: ['', [Validators.required]],
       quixaPrincipal: ['', [Validators.required]],
       pa: ['', [Validators.required]],
       fc: ['', [Validators.required]],

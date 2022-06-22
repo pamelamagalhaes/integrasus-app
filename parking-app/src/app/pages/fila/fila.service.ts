@@ -1,85 +1,110 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { FilaModel } from './model/fila.model';
 
-import {Customer, Employee} from '../models';
-
-
-
-
-//Pegar informações do LocalStorge que foram salvas pela triagem
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TablesService {
-  public loadEmployeeTableData(): Observable<Employee[]> {
-    return of([
-      {name: 'Joe James', company: 'Example Inc.', city: 'Yonkers', state: 'NY'},
-      {name: 'John Walsh', company: 'Example Inc.', city: 'Hartford', state: 'CT'},
-      {name: 'Bob Herm', company: 'Example Inc.', city: 'Tampa', state: 'FL'},
-      {name: 'James Houston', company: 'Example Inc.', city: 'Dallas', state: 'TX'},
-      {name: 'Prabhakar Linwood', company: 'Example Inc.', city: 'Hartford', state: 'CT'},
-      {name: 'Kaui Ignace', company: 'Example Inc.', city: 'Yonkers', state: 'NY'},
-      {name: 'Esperanza Susanne', company: 'Example Inc.', city: 'Hartford', state: 'CT'},
-      {name: 'Christian Birgitte', company: 'Example Inc.', city: 'Tampa', state: 'FL'},
-      {name: 'Meral Elias', company: 'Example Inc.', city: 'Hartford', state: 'CT'},
-      {name: 'Deep Pau', company: 'Example Inc.', city: 'Yonkers', state: 'NY'},
-      {name: 'Sebastiana Hani', company: 'Example Inc.', city: 'Dallas', state: 'TX'},
-      {name: 'Marciano Oihana', company: 'Example Inc.', city: 'Yonkers', state: 'NY'},
-      {name: 'Brigid Ankur', company: 'Example Inc.', city: 'Dallas', state: 'TX'},
-      {name: 'Anna Siranush', company: 'Example Inc.', city: 'Yonkers', state: 'NY'},
-      {name: 'Avram Sylva', company: 'Example Inc.', city: 'Hartford', state: 'CT'},
-      {name: 'Serafima Babatunde', company: 'Example Inc.', city: 'Tampa', state: 'FL'},
-      {name: 'Gaston Festus', company: 'Example Inc.', city: 'Tampa', state: 'FL'}
-    ]);
+export class FilaService {
+  public salvarLocalStorage() {
+
+    // colocar fila previa
+    let db_fila = [
+      {
+
+        nome: 'Baegarz Albuquerque',
+        idade: 35,
+        email: 'baegarz@gogo.net',
+        dataNascimento: '23/04/1985',
+        sexo: 'Feminino',
+        endereço: 'Rua Tijucas do sul',
+        numero: 70,
+        complemento: 'Casa',
+        cpf: '724.775.230-07',
+      },
+      {
+
+        nome: 'Rein Mariano',
+        idade: 68,
+        email: 'rein@april.biz',
+        dataNascimento: '19/02/1950',
+        sexo: 'Masculino',
+        endereço: 'Rua Augusto Freitas',
+        numero: 367,
+        complemento: 'Casa',
+        cpf: '768.511.260-44',
+      },
+      {
+
+        nome: 'Pape de Jesus',
+        idade: 27,
+        email: 'papea@oioi.net',
+        dataNascimento: '14/08/1994',
+        sexo: 'Feminino',
+        endereço: 'Rua Ramiro Freitas',
+        numero: 85,
+        complemento: 'Apto 202 bloco A',
+        cpf: '554.763.010-11',
+      },
+      {
+
+        nome: 'Poyma dos Santos',
+        idade: 30,
+        email: 'poym@yesenia.net',
+        dataNascimento: '14/08/1992',
+        sexo: 'Feminino',
+        endereço: 'Rua José Francisco',
+        numero: 120,
+        complemento: 'Apto 106 bloco C',
+        cpf: '146.883.290-59',
+      },
+      {
+
+        nome: 'Edhelxi Siva',
+        idade: 30,
+        email: 'edhelxi.silva@gogo.net',
+        dataNascimento: '14/08/1992',
+        sexo: 'Feminino',
+        endereço: 'Rua José Francisco',
+        numero: 120,
+        complemento: 'Apto 106 bloco C',
+        cpf: '115.509.620-78',
+      },
+    ];
+
+    var db = JSON.parse(localStorage.getItem('db_fila'));
+
+    if (!db) {
+      db = db_fila;
+      this.updateLocalStorage(db)
+    }
   }
 
-  public loadMaterialTableData(): Observable<Customer[]> {
-    return of([
-      {
-        name: 'Mark Otto',
-        email: 'ottoto@wxample.com',
-        product: 'ON the Road',
-        price: '$25 224.2',
-        date: '11 May 2017',
-        city: 'Otsego',
-        status: 'send'
-      },
-      {
-        name: 'Jacob Thornton',
-        email: 'thornton@wxample.com',
-        product: 'HP Core i7',
-        price: '$1 254.2',
-        date: '4 Jun 2017',
-        city: 'Fivepointville',
-        status: 'send'
-      },
-      {
-        name: 'Larry the Bird',
-        email: 'bird@wxample.com',
-        product: 'Air Pro',
-        price: '$1 570.0',
-        date: '27 Aug 2017',
-        city: 'Leadville North',
-        status: 'pending'
-      },
-      {
-        name: 'Joseph May',
-        email: 'josephmay@wxample.com',
-        product: 'Version Control',
-        price: '$5 224.5',
-        date: '19 Feb 2018',
-        city: 'Seaforth',
-        status: 'declined'
-      },
-      {
-        name: 'Peter Horadnia',
-        email: 'horadnia@wxample.com',
-        product: 'Let\'s Dance',
-        price: '$43 594.7',
-        date: '1 Mar 2018',
-        city: 'Hanoverton',
-        status: 'send'
-      }
-    ]);
+  public carregarFilaAtendimento(): Observable<FilaModel[]> {
+    var dados = JSON.parse(localStorage.getItem('db_fila'));
+    return of(dados);
+  }
+
+  public delete(cpf: string) {
+    var dados = JSON.parse(localStorage.getItem('db_fila'));
+
+    dados = dados.filter(a => a.cpf != cpf);
+
+    this.updateLocalStorage(dados)
+  }
+
+  public create(triagem: FilaModel) {
+    var dados = JSON.parse(localStorage.getItem('db_fila'));
+
+    // dados.find(a => a.registroProfissional == cadastro.registroProfissional)
+
+    dados.push(triagem)
+
+    this.updateLocalStorage(dados)
+  }
+
+  updateLocalStorage(db) {
+    // Atualiza dados LocalStorge
+    localStorage.setItem('db_fila', JSON.stringify(db));
   }
 }

@@ -33,12 +33,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/triagem/triagem.module').then((m) => m.TriagemModule),
   },
-  // {
-  //   path: 'fila',
-  //   canActivate: [AuthGuard],
-  //   loadChildren: () =>
-  //     import('./pages/fila/fila.module').then((m) => m.FilaModule),
-  // },
+   {
+    path: 'fila',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/fila/fila.module').then((m) => m.FilaModule),
+   },
   {
     path: 'typography',
     pathMatch: 'full',

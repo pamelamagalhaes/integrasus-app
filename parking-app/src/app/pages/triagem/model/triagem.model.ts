@@ -11,4 +11,4 @@ export interface TriagemModel {
 }
 
 
-// Atualizar para as variáveis de paciente
+// Atualizar para as variáveis de triagem

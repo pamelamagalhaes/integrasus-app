@@ -15,6 +15,7 @@ import { DetalheComponent } from './detalhe/detalhe.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TriagemService } from './triagem.service';
+// import { TriagemModule } from './triagem.module';
 import {MatRadioModule} from '@angular/material/radio'
 
 const routes: Routes = [

@@ -2,10 +2,9 @@
 @import 'src/app/styles/font';
 @import 'src/app/styles/variables';
 
-.material-table {
-  margin-top: 24px;
+.support-requests {
+  margin: 0 24px;
   padding: 0;
-  overflow: hidden;
   box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
 
   &__header {
@@ -24,7 +23,7 @@
   }
 
   &__content {
-    height: 424px;
+    height: 427px;
     overflow-y: hidden;
     overflow-x: scroll;
 
@@ -47,7 +46,7 @@
     font-weight: $fw-lighter;
     line-height: 24px;
     text-transform: uppercase;
-    padding: 16px;
+    padding: 18.4px;
   }
 
   &__table-content {
@@ -58,7 +57,7 @@
 
   &__content-badge {
     width: fit-content;
-    border-radius: 32px;
+    border-radius: 80px;
     color: $white;
     text-align: center;
     padding: 5px 10px;
@@ -67,7 +66,7 @@
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: $fw-lighter;
     line-height: 1.75;
-    letter-spacing: 0.457px;
+    letter-spacing: 0.45px;
 
     &::first-letter {
       text-transform: uppercase;
@@ -89,4 +88,31 @@ mat-menu {
 
 .declined {
   background-color: $pink;
+}
+
+.settings-button {
+  box-shadow: none;
+  background-color: $settings-button-background-color;
+  color: $settings-button-color;
+
+  &:hover {
+    background-color: $blue;
+    color: $settings-button-color-hover;
+  }
+
+  &__icon {
+    color: inherit;
+  }
+}
+
+.settings-menu {
+  position: absolute;
+
+  &__item {
+    color: $dark-grey;
+
+    &:hover {
+      background-color: $settings-menu-background-color-hover;
+    }
+  }
 }
