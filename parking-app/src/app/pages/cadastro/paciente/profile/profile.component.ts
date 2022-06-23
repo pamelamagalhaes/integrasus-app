@@ -48,7 +48,6 @@ export class ProfilePacienteComponent implements OnInit {
 
     // alterar aqui com as variáveis de paciente
     this.cadastroForm = this.fb.group({
-     // id: ['', [Validators.required]],
       nome: ['', [Validators.required]],
       idade: ['', [Validators.required, CustomValidators.validateCharacters]],
       email: ['', [Validators.required, Validators.email]],

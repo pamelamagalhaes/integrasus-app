@@ -5,28 +5,31 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+//import { SharedModule } from '../../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DetalheComponent } from './detalhe/detalhe.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { TriagemService } from './triagem.service';
-// import { TriagemModule } from './triagem.module';
-import {MatRadioModule} from '@angular/material/radio'
-import {MatStepperModule} from '@angular/material/stepper'
+import { MapPageComponent } from './map-page/map-page.component';
+import { MapService } from './map.service';
+import { AgmCoreModule } from '@agm/core';
+import { googleMapKey } from 'src/environments/environment';
+
+
 const routes: Routes = [
   {
     path: '',
-    component: DetalheComponent,
+    component: MapPageComponent,
   },
+
 ];
 
 @NgModule({
-  declarations: [DetalheComponent],
+  declarations: [MapPageComponent],
   imports: [
     MatMenuModule,
     MatTableModule,
@@ -36,16 +39,20 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     FormsModule,
-    MatStepperModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatRadioModule,
+    AgmCoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: googleMapKey
+    }),
     SharedModule,
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  providers: [TriagemService],
+  providers: [MapService],
 })
-export class TriagemModule {}
+export class MapModule {}
+

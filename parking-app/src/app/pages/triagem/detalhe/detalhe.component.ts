@@ -15,83 +15,61 @@ import { TriagemService } from '../triagem.service';
 export class DetalheComponent implements OnInit {
   public routers: typeof routes = routes;
   public cadastroForm: FormGroup;
-  public displayedColumns: string[] = [
-    'nome',
-    'idade',
-    'sexo',
-    'cpf',
-    'profissao',
-    'quixaPrincipal',
-    'pa',
-    'fc',
-    'fr',
-    'sintomasRespiratorios',
-    'spO2',
-    'temperatura',
-    'doençasSistemicas',
-    'menu',
-  ];
 
-  public supportRequestData$: Observable<TriagemModel[]>;
-  triagemForm: any;
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isLinear = false;
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
     public fb: FormBuilder,
     private service: TriagemService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _formBuilder: FormBuilder
   ) {
-    this.service.salvarLocalStorage();
-    this.load();
+
   }
 
   ngOnInit() {
-    this.load();
+
   }
 
-  load() {
-    this.supportRequestData$ = this.service.carregarTriagem();
-  }
-
- /* public onDelete(cpf: string) {
-    this.service.delete(cpf);
-
-    this.load();
-  }
-
-  onEdit(cpf: string) {}*/
 
   onCreate() {
     this.router.navigate([this.routers.TRIAGEM], { relativeTo: this.route });
   }
 
   public onSubmit() {
-    if (this.triagemForm.valid) {
-      this.triagemForm.reset();
+    if (this.cadastroForm.valid) {
+      this.cadastroForm.reset();
     }
 
-    this.service.create(this.triagemForm.value);
+    this.service.create(this.cadastroForm.value);
 
     this.router.navigate([this.routers.TRIAGEM], {
       relativeTo: this.route,
     });
   }
   public buildForm() {
-    this.triagemForm = this.fb.group({
-      nome: ['', [Validators.required]],
-      idade: ['', [Validators.required, CustomValidators.validateCharacters]],
-      sexo: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      profissao: ['', [Validators.required]],
-      quixaPrincipal: ['', [Validators.required]],
-      pa: ['', [Validators.required]],
-      fc: ['', [Validators.required]],
-      fr: ['', [Validators.required]],
-      sintomasRespiratorios: ['', [Validators.required]],
-      spO2: ['', [Validators.required]],
-      temperatura: ['', [Validators.required]],
-      doençasSistemicas: ['', [Validators.required]],
+    this.cadastroForm = this.fb.group({
+      nome: [null, [Validators.required]],
+      idade: [null, [Validators.required, CustomValidators.validateCharacters]],
+      sexo: [null, [Validators.required]],
+      cpf: [null, [Validators.required]],
+      profissao: [null, [Validators.required]],
+      quixaPrincipal: [null, [Validators.required]],
+      pa: [null, [Validators.required]],
+      fc: [null, [Validators.required]],
+      fr: [null, [Validators.required]],
+      sintomasRespiratorios: [null, [Validators.required]],
+      sp02: [null, [Validators.required]],
+      temperatura: [null, [Validators.required]],
+      doencasSistemicas: [null, [Validators.required]],
     });
 
 

@@ -16,6 +16,8 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes: Routes = [
   {
@@ -37,6 +39,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
@@ -44,6 +47,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    MatPaginatorModule,
     SharedModule,
     RouterModule.forChild(routes),
   ],

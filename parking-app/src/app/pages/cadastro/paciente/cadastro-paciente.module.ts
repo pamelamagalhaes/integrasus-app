@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CadastroPacienteService } from './cadastro-paciente.service';
 import { ProfilePacienteComponent } from './profile/profile.component';
 import { ListaPacienteComponent } from './lista/lista.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
     CommonModule,
     MatToolbarModule,
     MatCardModule,
+    MatPaginatorModule,
     MatButtonModule,
     MatFormFieldModule,
     FormsModule,

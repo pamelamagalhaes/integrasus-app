@@ -80,9 +80,9 @@ export class FilaService {
     }
   }
 
-  public carregarFilaAtendimento(): Observable<FilaModel[]> {
+  public carregarFilaAtendimento(): FilaModel[] {
     var dados = JSON.parse(localStorage.getItem('db_fila'));
-    return of(dados);
+    return dados;
   }
 
   public delete(cpf: string) {

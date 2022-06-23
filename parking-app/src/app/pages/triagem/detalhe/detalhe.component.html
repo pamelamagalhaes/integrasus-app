@@ -7,7 +7,42 @@
     <div class="typography-content__wrapper">
       <mat-card class="typography-content__item-wrapper">
 
-
+        <mat-stepper  #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Fill out your name</ng-template>
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+            <form [formGroup]="secondFormGroup">
+              <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                       required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-stepper>
+<!--         
         <div [formGroup]="cadastroForm" class="add-field">
           <div class="example-container">
 
@@ -28,93 +63,94 @@
 
             <mat-form-field appearance="fill">
               <mat-label>CPF</mat-label>
-              <input matInput name="name" formControlName="cpf" placeholder="111.111.111-11" type="text"
-                required>
+              <input matInput name="name" formControlName="cpf" placeholder="111.111.111-11" type="text" required>
             </mat-form-field>
           </div>
 
 
-            <div class="example-container">
+          <div class="example-container">
 
-              <mat-form-field appearance="fill">
-                <mat-label>Profissão</mat-label>
-                <input matInput name="profissao" formControlName="profissao" type="text" required>
-              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Profissão</mat-label>
+              <input matInput name="profissao" formControlName="profissao" type="text" required>
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Queixa Principal</mat-label>
-                <input matInput name="queixaPrincipal" formControlName="queixaPrincipal" type="text" required>
-              </mat-form-field>
-            </div>
+            <mat-form-field appearance="fill">
+              <mat-label>Queixa Principal</mat-label>
+              <input matInput name="queixaPrincipal" formControlName="queixaPrincipal" type="text" required>
+            </mat-form-field>
 
-            <div class="example-container">
-              <mat-toolbar class="page-header" role="heading">
-                <h1>Sinais Vitais</h1>
-              </mat-toolbar>
-
-              <mat-form-field appearance="fill">
-                <mat-label>PA</mat-label>
-                <input matInput name="pa" formControlName="pa" type="text" required>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>FC</mat-label>
-                <input matInput name="fc" formControlName="fc" type="text" required>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>FR</mat-label>
-                <input matInput name="fr" formControlName="fr" type="text" required>
-              </mat-form-field>
-
-            </div>
-            <div class="example-container">
-              <mat-form-field appearance="fill">
-                <mat-label>Sintomas Respiratórios</mat-label>
-                <input matInput name="sintomaRespitatorio" formControlName="sintomaRespitatorio" type="text" required>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>SpO2</mat-label>
-                <input matInput name="spO2" formControlName="spO2" type="text" required>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Temperatura</mat-label>
-                <input matInput name="temperatura" formControlName="temperatura" type="text" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Doenças Sistemicas</mat-label>
-                <input matInput name="doençasSistemicas" formControlName="doençasSistemicas" type="text" required>
-              </mat-form-field>
-            </div>
-
-            <div class="example-container">
-              <mat-toolbar class="page-header" role="heading">
-                <h1>Locomoção</h1>
-              </mat-toolbar>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Deambulando</mat-radio-button>
-                <mat-radio-button value="2">Com Apoio</mat-radio-button>
-                <mat-radio-button value="2">Claudicando</mat-radio-button>
-                <mat-radio-button value="2">Cadeira de Rodas</mat-radio-button>
-              </mat-radio-group>
-
-              <mat-toolbar class="page-header" role="heading">
-                <h1>Status</h1>
-              </mat-toolbar>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Muito Urgente</mat-radio-button>
-                <mat-radio-button value="2">Urgente</mat-radio-button>
-                <mat-radio-button value="2">Pouco Urgente</mat-radio-button>
-                <mat-radio-button value="2">Não Urgente</mat-radio-button>
-              </mat-radio-group>
-
-            </div>
-            <br />
-            <button (click)="onSubmit()" class="next square" name="button">Salvar</button>
-            <div class="foot-space"></div>
           </div>
+
+          <div class="example-container">
+            <mat-toolbar class="page-header" role="heading">
+              <h1>Sinais Vitais</h1>
+            </mat-toolbar>
+
+            <mat-form-field appearance="fill">
+              <mat-label>PA</mat-label>
+              <input matInput name="pa" formControlName="pa" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>FC</mat-label>
+              <input matInput name="fc" formControlName="fc" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>FR</mat-label>
+              <input matInput name="fr" formControlName="fr" type="text" required>
+            </mat-form-field>
+
+          </div> -->
+<!-- 
+          <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Sintomas Respiratórios</mat-label>
+              <input matInput name="sintomaRespitatorio" formControlName="sintomaRespitatorio" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>SpO2</mat-label>
+              <input matInput name="spO2" formControlName="sp02" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Temperatura</mat-label>
+              <input matInput name="temperatura" formControlName="temperatura" type="text" required>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+              <mat-label>Doenças Sistemicas</mat-label>
+              <input matInput name="doencasSistemicas" formControlName="doencasSistemicas" type="text" required>
+            </mat-form-field>
+          </div>  -->
+
+          <!-- <div class="example-container">
+            <mat-toolbar class="page-header" role="heading">
+              <h1>Locomoção</h1>
+            </mat-toolbar>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="1">Deambulando</mat-radio-button>
+              <mat-radio-button value="2">Com Apoio</mat-radio-button>
+              <mat-radio-button value="2">Claudicando</mat-radio-button>
+              <mat-radio-button value="2">Cadeira de Rodas</mat-radio-button>
+            </mat-radio-group>
+
+            <mat-toolbar class="page-header" role="heading">
+              <h1>Status</h1>
+            </mat-toolbar>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="1">Muito Urgente</mat-radio-button>
+              <mat-radio-button value="2">Urgente</mat-radio-button>
+              <mat-radio-button value="2">Pouco Urgente</mat-radio-button>
+              <mat-radio-button value="2">Não Urgente</mat-radio-button>
+            </mat-radio-group>
+          </div> -->
+          <!-- <br />
+          <button (click)="onSubmit()" class="next square" name="button">Salvar</button>
+          <div class="foot-space"></div> -->
+        <!-- </div> -->
       </mat-card>
     </div>
   </mat-card-content>

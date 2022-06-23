@@ -13,4 +13,5 @@ export enum routes {
   CADASTRO_PACIENTE_PROFILE = '/cadastro/paciente/profile',
   TRIAGEM = '/triagem',
   FILA = '/fila',
+  MAPA = '/mapa'
 }

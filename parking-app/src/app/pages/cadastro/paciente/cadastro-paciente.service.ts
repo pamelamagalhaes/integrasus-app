@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { CadastroPacienteModel } from './model/cadastro-paciente.model';
 
 @Injectable({
@@ -80,9 +79,9 @@ export class CadastroPacienteService {
     }
   }
 
-  public carregarListaMedico(): Observable<CadastroPacienteModel[]> {
+  public carregarListaPaciente(): CadastroPacienteModel[] {
     var dados = JSON.parse(localStorage.getItem('db_paciente'));
-    return of(dados);
+    return dados;
   }
 
   public delete(cpf: string) {

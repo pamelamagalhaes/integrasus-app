@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FilaService } from './fila.service';
 import { FilaComponent } from './component/fila.components';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     FormsModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     MatIconModule,
     MatFormFieldModule,

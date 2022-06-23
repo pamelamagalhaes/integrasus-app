@@ -138,15 +138,15 @@ export class CadastroMedicoService {
     }
   }
 
-  public carregarListaMedico(): Observable<CadastroMedicoModel[]> {
+  public carregarListaMedico(): CadastroMedicoModel[] {
     var dados = JSON.parse(localStorage.getItem('db_medico'));
-    return of(dados);
+    return dados;
   }
 
-  public delete(id: number) {
+  public delete(crm: string) {
     var dados = JSON.parse(localStorage.getItem('db_medico'));
 
-    dados = dados.filter(a => a.id != id);
+    dados = dados.filter(a => a.registroProfissional != crm);
 
     this.updateLocalStorage(dados)
   }

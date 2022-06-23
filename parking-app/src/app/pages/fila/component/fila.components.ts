@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { routes } from 'src/app/consts';
@@ -12,36 +15,39 @@ import { FilaModel } from '../model/fila.model';
 })
 export class FilaComponent implements OnInit {
 
-  public routers: typeof routes = routes;
-
   public displayedColumns: string[] = [
     'nome',
-    'idade',
     'email',
-    'dataNascimento',
-    'sexo',
     'cpf',
-    'status',
+    'menu',
   ];
+  public dataSource: MatTableDataSource<FilaModel>;
+  public selection = new SelectionModel<FilaModel>(true, []);
+  public supportRequestData: FilaModel[];
+  public isShowFilterInput = false;
+  public routers: typeof routes = routes;
 
-  public supportRequestData$: Observable<FilaModel[]>;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(
     private service: FilaService,
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.service.salvarLocalStorage();
-    this.load();
+    // this.load();
   }
 
-  ngOnInit() {
-    this.load();
+  public ngOnInit(): void {
+    this.load()
   }
 
   load() {
-    this.supportRequestData$ = this.service.carregarFilaAtendimento();
+    this.supportRequestData = this.service.carregarFilaAtendimento();
+    this.dataSource = new MatTableDataSource<FilaModel>(this.supportRequestData);
+
+    this.dataSource.paginator = this.paginator;
   }
 
   public onDelete(cpf: string) {
@@ -50,10 +56,35 @@ export class FilaComponent implements OnInit {
     this.load();
   }
 
-  onEdit(cpf: string) {}
-
-  onCreate() {
-    this.router.navigate([this.routers.FILA], { relativeTo: this.route });
+  /** Whether the number of selected elements matches the total number of rows. */
+  public isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
   }
 
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  public masterToggle(): void {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  public checkboxLabel(row?: any): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  public applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public showFilterInput(): void {
+    this.isShowFilterInput = !this.isShowFilterInput;
+    this.dataSource = new MatTableDataSource<FilaModel>(this.supportRequestData);
+  }
 }

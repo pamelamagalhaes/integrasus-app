@@ -33,12 +33,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/triagem/triagem.module').then((m) => m.TriagemModule),
   },
-   {
+  {
     path: 'fila',
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/fila/fila.module').then((m) => m.FilaModule),
-   },
+  },
+  {
+    path: 'mapa',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/map/map.module').then(
+        (m) => m.MapModule
+      ),
+  },
   {
     path: 'typography',
     pathMatch: 'full',
@@ -96,4 +104,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

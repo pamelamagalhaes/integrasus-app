@@ -7,6 +7,7 @@ export const environment = {
   hmr: false
 };
 
+export const googleMapKey: string = 'AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
