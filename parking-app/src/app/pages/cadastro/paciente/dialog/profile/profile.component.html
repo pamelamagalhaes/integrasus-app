@@ -1,0 +1,111 @@
+<mat-toolbar class="page-header" role="heading">
+  <h1>Cadastro Profissional</h1>
+</mat-toolbar>
+
+<mat-card-content class="typography-content">
+  <div class="typography-content__wrapper">
+    <mat-card class="typography-content__item-wrapper">
+
+
+      <div [formGroup]="cadastroForm" class="add-field">
+        <div class="example-container">
+
+          <mat-card-title>
+            <p>Dados Pessoais</p>
+          </mat-card-title>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput name="name" formControlName="nome" placeholder="Nome" type="name" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput name="name" formControlName="email" placeholder="E-mail" type="name" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Genero</mat-label>
+            <select formControlName="genero" matNativeControl required>
+              <option value="1">Masculino</option>
+              <option value="2">Feminino</option>
+            </select>
+          </mat-form-field>
+        </div>
+
+        <div class="example-container">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Data Nacimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataNascimento" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput name="name" formControlName="cpf" placeholder="Registro" type="name" required>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div [formGroup]="enderecoForm" class="add-field">
+        <div class="example-container">
+
+          <mat-card-title>
+            <p>Endereço</p>
+          </mat-card-title>
+
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Cep</mat-label>
+              <input matInput name="name" formControlName="cep" placeholder="Rua" type="name" required>
+            </mat-form-field>
+
+            <button class="employee-table-wrapper__button" mat-mini-fab (click)="buscaCep()">
+              <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+            </button>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Rua</mat-label>
+              <input matInput name="name" formControlName="logradouro" placeholder="Rua" type="name" required>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Bairro</mat-label>
+              <input matInput name="name" formControlName="bairro" placeholder="Rua" type="name" required>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Cidade</mat-label>
+              <input matInput name="name" formControlName="localidade" placeholder="Rua" type="name" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>UF</mat-label>
+              <input matInput name="name" formControlName="uf" placeholder="Rua" type="name" required>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Número</mat-label>
+              <input matInput name="name" formControlName="numero" placeholder="Número" type="name" required>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Complemento</mat-label>
+              <input matInput name="name" formControlName="complemento" placeholder="Complemento" type="name">
+            </mat-form-field>
+          </div>
+        </div>
+        <div align="end" style="width: 618px;">
+          <button mat-raised-button  (click)="onSubmit()" class="next square" name="button" [disabled]="!cadastroForm.valid && !enderecoForm.valid">Salvar</button>
+        </div>
+        
+      </div>
+
+    </mat-card>
+
+  </div>
+</mat-card-content>

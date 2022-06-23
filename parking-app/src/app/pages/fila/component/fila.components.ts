@@ -1,12 +1,18 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { routes } from 'src/app/consts';
+import { TriagemDialogComponent } from '../dialog/triagem-dialog/triagem-dialog.component';
 import { FilaService } from '../fila.service';
-import { FilaModel } from '../model/fila.model';
+import { ProntuarioModel } from '../model/prontuario.model';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-fila',
@@ -16,24 +22,27 @@ import { FilaModel } from '../model/fila.model';
 export class FilaComponent implements OnInit {
 
   public displayedColumns: string[] = [
+    'dataAtendimento',
     'nome',
-    'email',
-    'cpf',
+    'status',
     'menu',
   ];
-  public dataSource: MatTableDataSource<FilaModel>;
-  public selection = new SelectionModel<FilaModel>(true, []);
-  public supportRequestData: FilaModel[];
+  public dataSource: MatTableDataSource<ProntuarioModel>;
+  public selection = new SelectionModel<ProntuarioModel>(true, []);
+  public supportRequestData: ProntuarioModel[];
   public isShowFilterInput = false;
   public routers: typeof routes = routes;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+  animal: string;
+  name: string;
 
   constructor(
     private service: FilaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.service.salvarLocalStorage();
     // this.load();
@@ -45,7 +54,7 @@ export class FilaComponent implements OnInit {
 
   load() {
     this.supportRequestData = this.service.carregarFilaAtendimento();
-    this.dataSource = new MatTableDataSource<FilaModel>(this.supportRequestData);
+    this.dataSource = new MatTableDataSource<ProntuarioModel>(this.supportRequestData);
 
     this.dataSource.paginator = this.paginator;
   }
@@ -85,6 +94,17 @@ export class FilaComponent implements OnInit {
 
   public showFilterInput(): void {
     this.isShowFilterInput = !this.isShowFilterInput;
-    this.dataSource = new MatTableDataSource<FilaModel>(this.supportRequestData);
+    this.dataSource = new MatTableDataSource<ProntuarioModel>(this.supportRequestData);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TriagemDialogComponent, {
+      width: '800px', height: '700px',
+      data: { name: this.name, animal: this.animal },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.load();
+    });
   }
 }

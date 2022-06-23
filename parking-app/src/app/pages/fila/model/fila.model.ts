@@ -1,10 +1,9 @@
 export interface FilaModel {
-  nome:string;
-    idade: number;
-    email: string;
-    dataNascimento: string;
-    sexo: string;
-    cpf: string;
+  nome: string;
+  email: string;
+  dataNascimento: string;
+  sexo: string;
+  cpf: string;
 }
 
 

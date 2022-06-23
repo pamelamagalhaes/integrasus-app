@@ -28,12 +28,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'triagem',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./pages/triagem/triagem.module').then((m) => m.TriagemModule),
-  },
-  {
     path: 'fila',
     canActivate: [AuthGuard],
     loadChildren: () =>

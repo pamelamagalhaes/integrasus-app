@@ -17,6 +17,9 @@ import { FilaService } from './fila.service';
 import { FilaComponent } from './component/fila.components';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TriagemDialogComponent } from './dialog/triagem-dialog/triagem-dialog.component';
+import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const routes: Routes = [
@@ -28,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [FilaComponent],
+  declarations: [FilaComponent, TriagemDialogComponent],
   imports: [
     MatMenuModule,
     MatTableModule,
@@ -40,9 +43,10 @@ const routes: Routes = [
     FormsModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    MatIconModule,
+    MatIconModule, MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
+    MatNativeDateModule,
     MatDatepickerModule,
     SharedModule,
     RouterModule.forChild(routes),
@@ -50,5 +54,5 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [FilaService],
 })
-export class FilaModule {}
+export class FilaModule { }
 

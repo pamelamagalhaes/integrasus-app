@@ -1,12 +1,15 @@
 export interface CadastroMedicoModel {
-  id: number;
-  nome: string;
-  idade: number;
-  email: string;
-  dataNascimento: string;
-  sexo: string;
-  endereço: string;
-  numero: number;
-  complemento: string;
-  registroProfissional: string;
+  nome: string,
+  email: string,
+  dataNascimento: Date,
+  genero: number,
+  registroProfissional: string,
+
+  cep: string,
+  logradouro: string,
+  bairro: string,
+  localidade: string,
+  numero: number,
+  uf: string,
+  complemento: string,
 }

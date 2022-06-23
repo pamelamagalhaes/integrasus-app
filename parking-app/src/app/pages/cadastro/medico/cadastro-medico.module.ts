@@ -11,14 +11,15 @@ import { ListaComponent } from './lista/lista.component';
 import { MatTableModule } from '@angular/material/table';
 import { CadastroMedicoService } from './cadastro-medico.service';
 import { MatMenuModule } from '@angular/material/menu';
-import { ProfileComponent } from './profile/profile.component';
-import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { ProfileComponent } from './dialog/profile/profile.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 const routes: Routes = [
   {
     path: 'lista',
@@ -39,6 +40,8 @@ const routes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatCheckboxModule,
     MatFormFieldModule,
     FormsModule,
@@ -49,6 +52,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatPaginatorModule,
     SharedModule,
+    MatSelectModule,
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],

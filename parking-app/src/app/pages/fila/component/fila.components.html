@@ -16,27 +16,31 @@
         <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
           <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
         </button>
+        <button class="employee-table-wrapper__button" mat-mini-fab>
+          <mat-icon class="employee-table-wrapper__icon" (click)="openDialog()">person</mat-icon>
+        </button>
       </div>
     </mat-card-title>
     <mat-card-content class="employee-table__content">
       <table class="employee-table__table" mat-table [dataSource]="dataSource">
   
+        
+        <!-- Company Column -->
+        <ng-container matColumnDef="dataAtendimento">
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Data </th>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.dataAtendimento | date: 'medium'}} </td>
+        </ng-container>
+
         <!-- Name Column -->
         <ng-container matColumnDef="nome" >
           <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef > Nome </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.nome}} </td>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.nome }} </td>
         </ng-container>
-  
-        <!-- Company Column -->
-        <ng-container matColumnDef="email">
-          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Email </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.email}} </td>
-        </ng-container>
-  
+        
         <!-- City Column -->
-        <ng-container matColumnDef="cpf">
-          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> CPF </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+        <ng-container matColumnDef="status">
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Status </th>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
   
         <!-- State Column -->

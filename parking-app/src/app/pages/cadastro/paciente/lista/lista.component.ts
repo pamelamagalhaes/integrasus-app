@@ -1,11 +1,13 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { routes } from 'src/app/consts';
 import { CadastroPacienteService } from '../cadastro-paciente.service';
+import { ProfileComponent } from '../dialog/profile/profile.component';
 import { CadastroPacienteModel } from '../model/cadastro-paciente.model';
 
 @Component({
@@ -33,7 +35,8 @@ export class ListaPacienteComponent implements OnInit {
   constructor(
     private service: CadastroPacienteService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.service.salvarLocalStorage();
     // this.load();
@@ -55,8 +58,6 @@ export class ListaPacienteComponent implements OnInit {
 
     this.load();
   }
-
-  onEdit(cpf: number) { }
 
   onCreate() {
     this.router.navigate([this.routers.CADASTRO_PACIENTE_PROFILE], { relativeTo: this.route });
@@ -95,6 +96,29 @@ export class ListaPacienteComponent implements OnInit {
     this.dataSource = new MatTableDataSource<CadastroPacienteModel>(this.supportRequestData);
   }
 
+  onEdit(cpf: string) {
+    var cadastro = this.supportRequestData.find(a => a.cpf == cpf)
+
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '800px', height: '700px',
+      data: cadastro,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.load();
+    });
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '800px', height: '730px',
+      // data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.load();
+      // this.animal = result;
+    });
+  }
 
 }
 

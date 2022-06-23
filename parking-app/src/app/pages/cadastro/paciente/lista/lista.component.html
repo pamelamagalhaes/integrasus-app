@@ -16,7 +16,7 @@
         <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
           <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
         </button>
-        <button class="employee-table-wrapper__button" mat-mini-fab (click)="onCreate()">
+        <button class="employee-table-wrapper__button" mat-mini-fab (click)="openDialog()">
           <mat-icon class="employee-table-wrapper__icon">person</mat-icon>
         </button>
       </div>
@@ -52,7 +52,7 @@
               </button>
               <div class="settings-menu">
                 <mat-menu #settings="matMenu" xPosition="before">
-                  <button class="settings-menu__item" mat-menu-item>Editar</button>
+                  <button class="settings-menu__item" mat-menu-item  (click)="onEdit(element.cpf)">Editar</button>
                   <button class="settings-menu__item" mat-menu-item (click)="onDelete(element.cpf)">Deletar</button>
                 </mat-menu>
               </div>

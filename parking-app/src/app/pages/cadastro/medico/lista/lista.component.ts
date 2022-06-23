@@ -1,13 +1,12 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { relative } from 'path';
-import { Observable } from 'rxjs';
 import { routes } from 'src/app/consts';
-import { Employee } from 'src/app/pages/tables/models';
 import { CadastroMedicoService } from '../cadastro-medico.service';
+import { ProfileComponent } from '../dialog/profile/profile.component';
 import { CadastroMedicoModel } from '../model/cadastro-medico.model';
 
 @Component({
@@ -22,6 +21,7 @@ export class ListaComponent implements OnInit {
     'registroProfissional',
     'menu',
   ];
+
   public dataSource: MatTableDataSource<CadastroMedicoModel>;
   public selection = new SelectionModel<CadastroMedicoModel>(true, []);
   public supportRequestData: CadastroMedicoModel[];
@@ -34,7 +34,8 @@ export class ListaComponent implements OnInit {
   constructor(
     private service: CadastroMedicoService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.service.salvarLocalStorage();
     // this.load();
@@ -90,9 +91,32 @@ export class ListaComponent implements OnInit {
     this.load();
   }
 
-  onEdit(id: number) {}
+  onEdit(registro: string) {
+    var cadastro = this.supportRequestData.find(a => a.registroProfissional == registro)
+
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '800px', height:'700px',
+      data: cadastro,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.load();
+    });
+  }
 
   onCreate() {
     this.router.navigate([this.routers.CADASTRO_MEDICO_PROFILE], { relativeTo: this.route });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '800px', height:'730px',
+      // data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.load();
+      // this.animal = result;
+    });
   }
 }

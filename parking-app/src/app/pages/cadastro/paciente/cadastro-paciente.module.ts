@@ -14,9 +14,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CadastroPacienteService } from './cadastro-paciente.service';
-import { ProfilePacienteComponent } from './profile/profile.component';
 import { ListaPacienteComponent } from './lista/lista.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ProfileComponent } from './dialog/profile/profile.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const routes: Routes = [
   {
@@ -25,12 +26,12 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfilePacienteComponent,
+    component: ProfileComponent,
   },
 ];
 
 @NgModule({
-  declarations: [ListaPacienteComponent, ProfilePacienteComponent],
+  declarations: [ListaPacienteComponent, ProfileComponent],
   imports: [
     MatMenuModule,
     MatTableModule,
@@ -45,6 +46,7 @@ const routes: Routes = [
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatNativeDateModule,
     MatDatepickerModule,
     SharedModule,
     RouterModule.forChild(routes),
