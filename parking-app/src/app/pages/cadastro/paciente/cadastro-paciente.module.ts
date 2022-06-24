@@ -18,6 +18,10 @@ import { ListaPacienteComponent } from './lista/lista.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ProfileComponent } from './dialog/profile/profile.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { ListaProntuarioComponent } from './lista-prontuario/lista-prontuario.component';
+import { ProntuarioComponent } from './prontuario/prontuario.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -28,19 +32,34 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
   },
+  {
+    path: 'lista/prontuario/:cpf',
+    component: ListaProntuarioComponent,
+  },
+  {
+    path: 'analisar/prontuario/:id',
+    component: ProntuarioComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [ListaPacienteComponent, ProfileComponent],
+  declarations: [
+    ListaPacienteComponent,
+    ProfileComponent,
+    ListaProntuarioComponent,
+    ProntuarioComponent],
   imports: [
     MatMenuModule,
     MatTableModule,
+    HttpClientModule,
     CommonModule,
     MatToolbarModule,
     MatCardModule,
     MatPaginatorModule,
     MatButtonModule,
+    MatRadioModule,
     MatFormFieldModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -54,5 +73,5 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [CadastroPacienteService],
 })
-export class CadastroPacienteModule {}
+export class CadastroPacienteModule { }
 

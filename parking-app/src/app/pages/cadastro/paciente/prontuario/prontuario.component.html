@@ -1,0 +1,189 @@
+<app-layout>
+  <mat-toolbar class="page-header" role="heading">
+    <h1>Prontuário</h1>
+  </mat-toolbar>
+
+  <mat-card-content class="typography-content">
+    <div class="typography-content__wrapper">
+      <mat-card class="typography-content__item-wrapper" style="width: 50%;">
+
+        <div class="add-field">
+          <div [formGroup]="cadastroForm" class="example-container example-full-width">
+
+            <mat-card-title>
+              <p>Dados Pessoais</p>
+            </mat-card-title>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Nome</mat-label>
+              <input matInput name="name" formControlName="nome" placeholder="Nome" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Data Nacimento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dataNascimento" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Genero</mat-label>
+              <select formControlName="genero" matNativeControl required>
+                <option value="1">Masculino</option>
+                <option value="2">Feminino</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div [formGroup]="queixaForm">
+            <div class="example-container">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Queixa Principal</mat-label>
+                <textarea matInput formControlName="queixa"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div [formGroup]="sinaiVitaisForm">
+            <div class="example-container">
+
+              <mat-form-field appearance="fill">
+                <mat-label>PA</mat-label>
+                <input matInput name="name" formControlName="pa" placeholder="Pressão Arterial" type="text" required>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>FC</mat-label>
+                <input matInput name="name" formControlName="fc" placeholder="Freq. Cardiaca" type="text" required>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>FR</mat-label>
+                <input matInput name="name" formControlName="fr" placeholder="Freq. Respiratória" type="text" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div [formGroup]="sintomaRespForm">
+            <div class="example-container">
+              <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Sintoma Respiratório</mat-label>
+                  <textarea matInput formControlName="sintomaResp"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="">
+                <mat-form-field appearance="fill">
+                  <mat-label>SpO2</mat-label>
+                  <input matInput formControlName="sp" name="spO2" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Temperatura</mat-label>
+                  <input matInput formControlName="temperatura" name="temperatura" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Doenças Sistemicas</mat-label>
+                  <input matInput formControlName="doencasSistemicas" name="doencasSistemicas" type="text" required>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div [formGroup]="locomocaoForm">
+            <div class="example-container">
+              <mat-card-title>
+                <p>Locomoção</p>
+              </mat-card-title>
+              <mat-radio-group aria-label="Select an option" formControlName="locomocao">
+                <mat-radio-button value="1">Deambulando</mat-radio-button>
+                <mat-radio-button value="2">Com Apoio</mat-radio-button>
+                <mat-radio-button value="3">Claudicando</mat-radio-button>
+                <mat-radio-button value="4">Cadeira de Rodas</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div [formGroup]="cadastroForm">
+            <div class="example-container">
+              <mat-card-title>
+                <p>Status</p>
+              </mat-card-title>
+              <mat-radio-group aria-label="Select an option" formControlName="status">
+                <mat-radio-button value="1">Muito Urgente</mat-radio-button>
+                <mat-radio-button value="2">Urgente</mat-radio-button>
+                <mat-radio-button value="3">Pouco Urgente</mat-radio-button>
+                <mat-radio-button value="4">Não Urgente</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+        </div>
+
+      </mat-card>
+      <mat-card class="typography-content__item-wrapper" style="width: 50%;">
+        
+        <div class="add-field">
+          <div [formGroup]="prontuarioForm">
+            <div class="example-container">
+              <mat-form-field style="width: 91%;" appearance="fill">
+                <mat-label>Diagnóstico Clínico</mat-label>
+                <textarea matInput formControlName="diagnostico"></textarea>
+              </mat-form-field>
+  
+              <mat-form-field style="width: 91%;" appearance="fill">
+                <mat-label>Sinais e Sintomas</mat-label>
+                <textarea matInput formControlName="sintomas"></textarea>
+              </mat-form-field>
+  
+              <mat-form-field style="width: 91%;" appearance="fill">
+                <mat-label>Doença Atual</mat-label>
+                <textarea matInput formControlName="doencaAtual"></textarea>
+              </mat-form-field>
+  
+              <mat-form-field style="width: 91%;" appearance="fill">
+                <mat-label>Doença Pregressa</mat-label>
+                <textarea matInput formControlName="doencaPregressa"></textarea>
+              </mat-form-field>
+  
+              <div class="example-container">
+                <mat-form-field style="width: 45%;" appearance="fill">
+                  <mat-label>Cirurgias</mat-label>
+                  <textarea matInput formControlName="cirurgia"></textarea>
+                </mat-form-field>
+    
+                <mat-form-field style="width: 45%;" appearance="fill">
+                  <mat-label>Medicações</mat-label>
+                  <textarea matInput formControlName="medicacao"></textarea>
+                </mat-form-field>
+              </div>
+              
+              <div class="">
+                <mat-form-field style="width: 45%;" appearance="fill">
+                  <mat-label>Testes Específicos</mat-label>
+                  <textarea matInput formControlName="testes"></textarea>
+                </mat-form-field>
+    
+                <mat-form-field style="width: 45%;" appearance="fill">
+                  <mat-label>Alergias</mat-label>
+                  <textarea matInput formControlName="alergias"></textarea>
+                </mat-form-field>
+              </div>
+              
+  
+              <mat-form-field style="width: 91%;" appearance="fill">
+                <mat-label>Evolução</mat-label>
+                <textarea matInput formControlName="evolucao"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        
+        <!-- <div align="end" style="width: 710px;">
+          <button mat-raised-button class="next square" name="button" (click)="onSubmit()">Salvar</button>
+        </div> -->
+      </mat-card>
+    </div>
+  </mat-card-content>
+</app-layout>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CadastroPacienteModel } from './model/cadastro-paciente.model';
+import { ProntuarioModel } from './model/prontuario.model';
 
 @Injectable({
   providedIn: 'root',
@@ -49,5 +50,14 @@ export class CadastroPacienteService {
   updateLocalStorage(db) {
     // Atualiza dados LocalStorge
     localStorage.setItem('db_paciente', JSON.stringify(db));
+  }
+
+  public carregarProntuarios(cpf: string): ProntuarioModel[] {
+    var dados = JSON.parse(localStorage.getItem('db_fila')).filter(a => a.cpf == cpf && a.ativo == false);
+    return dados;
+  }
+  
+  public buscarProntuario(id: string): CadastroPacienteModel{
+    return JSON.parse(localStorage.getItem('db_fila')).find(a => a.id === id);
   }
 }

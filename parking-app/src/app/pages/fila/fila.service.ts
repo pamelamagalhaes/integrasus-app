@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CadastroPacienteModel } from './model copy/cadastro-paciente.model';
+import { CadastroPacienteModel } from './model/cadastro-paciente.model';
 import { ProntuarioModel } from './model/prontuario.model';
 
 @Injectable({
@@ -20,14 +20,19 @@ export class FilaService {
   }
 
   public carregarFilaAtendimento(): ProntuarioModel[] {
-    var dados = JSON.parse(localStorage.getItem('db_fila'));
+    var dados = JSON.parse(localStorage.getItem('db_fila')).filter(a => a.ativo == true);
     return dados;
   }
 
-  public delete(cpf: string) {
+  public delete(id: string) {
     var dados = JSON.parse(localStorage.getItem('db_fila'));
 
-    dados = dados.filter(a => a.cpf != cpf);
+    var dado = dados.find(a => a.id == id);
+    dados = dados.filter(a => a.id != id);
+    
+    dado.ativo = false
+    
+    dados.push(dado)
 
     this.updateLocalStorage(dados)
   }
@@ -39,7 +44,7 @@ export class FilaService {
       dados.push(triagem)
     }
     else {
-      dados = dados.filter(a => a.cpf !== triagem.cpf)
+      dados = dados.filter(a => a.id !== triagem.id)
 
       dados.push(triagem)
     }
@@ -52,7 +57,11 @@ export class FilaService {
     localStorage.setItem('db_fila', JSON.stringify(db));
   }
 
-  public buscar(cpf: string): CadastroPacienteModel{
+  public buscarPaciente(cpf: string): CadastroPacienteModel{
     return JSON.parse(localStorage.getItem('db_paciente')).find(a => a.cpf === cpf);
+  }
+
+  public buscarProntuario(id: string): CadastroPacienteModel{
+    return JSON.parse(localStorage.getItem('db_fila')).find(a => a.id === id);
   }
 }

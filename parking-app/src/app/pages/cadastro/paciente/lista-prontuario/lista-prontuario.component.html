@@ -2,7 +2,7 @@
 
   <mat-card class="employee-table-wrapper">
     <mat-card-title class="employee-table-wrapper__header">
-      <p *ngIf="!isShowFilterInput" class="employee-table-wrapper__title">Fila Atendimento</p>
+      <p *ngIf="!isShowFilterInput" class="employee-table-wrapper__title">Gerenciar Prontuários</p>
       <div *ngIf="isShowFilterInput" class="employee-table-wrapper__search">
         <div class="employee-table-wrapper__icon-wrapper">
           <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
@@ -16,9 +16,9 @@
         <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
           <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
         </button>
-        <button class="employee-table-wrapper__button" mat-mini-fab>
+        <!-- <button class="employee-table-wrapper__button" mat-mini-fab>
           <mat-icon class="employee-table-wrapper__icon" (click)="openDialog()">person</mat-icon>
-        </button>
+        </button> -->
       </div>
     </mat-card-title>
     <mat-card-content class="employee-table__content">
@@ -53,8 +53,8 @@
               </button>
               <div class="settings-menu">
                 <mat-menu #settings="matMenu" xPosition="before">
-                  <button class="settings-menu__item" mat-menu-item (click)="onProntuario(element.id)">Atender</button>
-                  <button class="settings-menu__item" mat-menu-item (click)="onDelete(element.id)">Remover</button>
+                  <button class="settings-menu__item" mat-menu-item (click)="onProntuario(element.id)">Analisar</button>
+                  <!-- <button class="settings-menu__item" mat-menu-item (click)="onDelete(element.id)">Remover</button> -->
                 </mat-menu>
               </div>
             </span>

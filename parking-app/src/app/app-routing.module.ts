@@ -1,15 +1,15 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './pages/auth/guards';
+import { TelaInicialComponent } from './pages/home/tela-inicial/tela-inicial.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: 'home',
     pathMatch: 'full',
     canActivate: [AuthGuard],
-    component: DashboardPageComponent,
+    component: TelaInicialComponent,
   },
   {
     path: 'cadastro/medico',
@@ -32,14 +32,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/fila/fila.module').then((m) => m.FilaModule),
-  },
-  {
-    path: 'mapa',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./pages/map/map.module').then(
-        (m) => m.MapModule
-      ),
   },
   {
     path: 'typography',

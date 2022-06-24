@@ -1,5 +1,5 @@
 export enum routes {
-  DASHBOARD = '/dashboard',
+  HOME = '/home',
   TYPOGRAPHY = '/typography',
   TABLES = '/tables',
   NOTIFICATION = '/notification',
@@ -13,5 +13,8 @@ export enum routes {
   CADASTRO_PACIENTE_PROFILE = '/cadastro/paciente/profile',
   TRIAGEM = '/triagem',
   FILA = '/fila',
+  PRONTUARIO = '/fila/prontuario',
+  LISTA_PRONTUARIO = '/cadastro/paciente/lista/prontuario/',
+  ANALISAR_PRONTUARIO = '/cadastro/paciente/analisar/prontuario/',
   MAPA = '/mapa'
 }

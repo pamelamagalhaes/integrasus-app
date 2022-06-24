@@ -63,6 +63,9 @@ export class ListaPacienteComponent implements OnInit {
     this.router.navigate([this.routers.CADASTRO_PACIENTE_PROFILE], { relativeTo: this.route });
   }
 
+  onProntuario(cpf: string) {
+    this.router.navigate([this.routers.LISTA_PRONTUARIO, cpf], { relativeTo: this.route });
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   public isAllSelected(): boolean {
@@ -108,6 +111,20 @@ export class ListaPacienteComponent implements OnInit {
       this.load();
     });
   }
+
+  onExame(cpf: string) {
+    // var cadastro = this.supportRequestData.find(a => a.cpf == cpf)
+
+    // const dialogRef = this.dialog.open(ExameComponent, {
+    //   width: '800px', height: '700px',
+    //   // data: cadastro,
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.load();
+    // });
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(ProfileComponent, {
       width: '800px', height: '730px',

@@ -20,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { TriagemDialogComponent } from './dialog/triagem-dialog/triagem-dialog.component';
 import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ProntuarioComponent } from './prontuario/prontuario.component';
 
 
 const routes: Routes = [
@@ -27,11 +28,15 @@ const routes: Routes = [
     path: '',
     component: FilaComponent,
   },
+  {
+    path: 'prontuario/:id',
+    component: ProntuarioComponent,
+  },
 
 ];
 
 @NgModule({
-  declarations: [FilaComponent, TriagemDialogComponent],
+  declarations: [FilaComponent, TriagemDialogComponent, ProntuarioComponent],
   imports: [
     MatMenuModule,
     MatTableModule,

@@ -3,23 +3,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { routes } from 'src/app/consts';
-import { TriagemDialogComponent } from '../dialog/triagem-dialog/triagem-dialog.component';
-import { FilaService } from '../fila.service';
+import { CadastroPacienteService } from '../cadastro-paciente.service';
 import { ProntuarioModel } from '../model/prontuario.model';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
 @Component({
-  selector: 'app-fila',
-  templateUrl: './fila.components.html',
-  styleUrls: ['./fila.components.scss']
+  selector: 'app-lista-prontuario',
+  templateUrl: './lista-prontuario.component.html',
+  styleUrls: ['./lista-prontuario.component.scss']
 })
-export class FilaComponent implements OnInit {
+export class ListaProntuarioComponent implements OnInit {
+
+  cpf:string;
 
   public displayedColumns: string[] = [
     'dataAtendimento',
@@ -39,7 +35,7 @@ export class FilaComponent implements OnInit {
   name: string;
 
   constructor(
-    private service: FilaService,
+    private service: CadastroPacienteService,
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog
@@ -53,14 +49,15 @@ export class FilaComponent implements OnInit {
   }
 
   load() {
-    this.supportRequestData = this.service.carregarFilaAtendimento();
+    this.route.params.subscribe((params: Params) => this.cpf = params['cpf']);
+    this.supportRequestData = this.service.carregarProntuarios(this.cpf);
     this.dataSource = new MatTableDataSource<ProntuarioModel>(this.supportRequestData);
 
     this.dataSource.paginator = this.paginator;
   }
 
-  public onProntuario(cpf: string) {
-    this.router.navigate([this.routers.PRONTUARIO, cpf], { relativeTo: this.route });
+  public onProntuario(id: string) {
+    this.router.navigate([this.routers.ANALISAR_PRONTUARIO, id], { relativeTo: this.route });
   }
 
   public onDelete(id: string) {
@@ -99,16 +96,5 @@ export class FilaComponent implements OnInit {
   public showFilterInput(): void {
     this.isShowFilterInput = !this.isShowFilterInput;
     this.dataSource = new MatTableDataSource<ProntuarioModel>(this.supportRequestData);
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(TriagemDialogComponent, {
-      width: '800px', height: '700px',
-      data: { name: this.name, animal: this.animal },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.load();
-    });
   }
 }
