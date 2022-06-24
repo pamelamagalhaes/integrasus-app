@@ -1,44 +1,19 @@
 <div class="auth-page">
   <div class="auth-page__content-block">
     <div class="auth-page__content-wrapper">
-      <mat-tab-group class="auth-page__group">
-        <mat-tab label="Login">
-          <h4 class="auth-page__group-title">Olá!</h4>
-          <!-- <div class="auth-page__google-button-wrapper">
-            <button mat-raised-button class="auth-page__google-button">
-              <img class="auth-page__google-button-icon" src="./assets/auth/google.svg" alt="google">Sign in with Google
-            </button>
-          </div> 
+      <!-- <mat-tab-group class="auth-page__group">
+        <mat-tab label="Login"> -->
+      <div class="auth-page__group">
+        <h4 class="auth-page__group-title">Seja Bem-vindo!</h4>
 
-          <div class="auth-page__border-wrapper">
-            <div class="auth-page__border-line"></div>
-            <p class="auth-page__border-title">or</p>
-            <div class="auth-page__border-line"></div>
-          </div> -->
+        <app-login-form (sendLoginForm)="sendLoginForm()"></app-login-form>
 
-          <app-login-form (sendLoginForm)="sendLoginForm()"></app-login-form>
+      </div>
 
-        </mat-tab>
-        <mat-tab label="New User">
-          <h4 class="auth-page__group-title">Seja Bem-vindo!</h4>
-          <p class="auth-page__group-sub-title">Crie sua conta</p>
-
-          <app-sign-form (sendSignForm)="sendSignForm()"></app-sign-form>
-<!-- 
-          <div class="auth-page__border-wrapper">
-            <div class="auth-page__border-line"></div>
-            <p class="auth-page__border-title">or</p>
-            <div class="auth-page__border-line"></div>
-          </div> -->
-
-          <!-- <div class="auth-page__google-button-wrapper">
-            <button mat-raised-button class="auth-page__google-button">
-              <img class="auth-page__google-button-icon" src="./assets/auth/google.svg" alt="google">Sign in with Google
-            </button>
-          </div> -->
-        </mat-tab>
-      </mat-tab-group>
-<!-- 
+      <!-- </mat-tab>
+      
+      </mat-tab-group> -->
+      <!-- 
       <p class="auth-page__footer-title">© 2022-{{todayDate | year}} <a href="https://flatlogic.com/">Flatlogic</a>, LLC. All rights reserved.</p> -->
     </div>
   </div>
