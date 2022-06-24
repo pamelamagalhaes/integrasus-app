@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { routes } from 'src/app/consts';
 import { CadastroPacienteService } from '../cadastro-paciente.service';
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-prontuario',
   templateUrl: './prontuario.component.html',
@@ -22,7 +22,12 @@ export class ProntuarioComponent implements OnInit {
 
   public editar = false;
 
-  constructor(private route: ActivatedRoute, public fb: FormBuilder, private service: CadastroPacienteService, private router: Router,) { }
+  constructor(
+    private route: ActivatedRoute, 
+    public fb: FormBuilder, 
+    private service: CadastroPacienteService, 
+    private router: Router,
+    private _location: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
@@ -40,6 +45,11 @@ export class ProntuarioComponent implements OnInit {
       this.editar = true;
     }
   }
+
+  backClicked() {
+    this._location.back();
+  }
+
   public buildForm() {
     this.cadastroForm = this.fb.group({
       nome: ['', [Validators.required]],
