@@ -156,17 +156,17 @@
       align-items: center;
     }
   
-    // &__icon-wrapper {
-    //   // height: 46px;
-    //   // width: 46px;
-    //   // display: flex;
-    //   // align-items: center;
-    //   // justify-content: center;
-    // }
+    &__icon-wrapper {
+      height: 46px;
+      width: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   
-    // &__icon {
-    //   color: inherit;
-    // }
+    &__icon {
+      color: inherit;
+    }
   
     &__search-input {
       font-size: $fs-normal;
@@ -197,6 +197,7 @@
       }
     }
   }
+  
   
   .example-full-width {
     width: 99%;

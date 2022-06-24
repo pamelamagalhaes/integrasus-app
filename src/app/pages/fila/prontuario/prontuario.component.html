@@ -102,20 +102,20 @@
               <mat-radio-button value="4">Cadeira de Rodas</mat-radio-button>
             </mat-radio-group>
           </div>
-        </div>
-        <br>
-        <br>
-        <div [formGroup]="cadastroForm">
-          <div style=" margin-left: 2%; width: 100%;">
-            <mat-card-title>
-              <p>Status</p>
-            </mat-card-title>
-            <mat-radio-group aria-label="Select an option" formControlName="status">
-              <mat-radio-button value="1">Muito Urgente</mat-radio-button>
-              <mat-radio-button value="2">Urgente</mat-radio-button>
-              <mat-radio-button value="3">Pouco Urgente</mat-radio-button>
-              <mat-radio-button value="4">Não Urgente</mat-radio-button>
-            </mat-radio-group>
+          <br>
+          <br>
+          <div [formGroup]="cadastroForm">
+            <div class="example-container">
+              <mat-card-title>
+                <p>Status</p>
+              </mat-card-title>
+              <mat-radio-group aria-label="Select an option" formControlName="status">
+                <mat-radio-button value="1"><font color="#CC1100"><b>Muito Urgente</b></font></mat-radio-button>
+                <mat-radio-button value="2"><font color="#FF6400"><b>Urgente</b></font></mat-radio-button>
+                <mat-radio-button value="3"><font color="#028A0F"><b>Pouco Urgente</b></font></mat-radio-button>
+                <mat-radio-button value="4"><font color="#60CDF1"><b>Não Urgente</b></font></mat-radio-button>
+              </mat-radio-group>
+            </div>
           </div>
         </div>
 
