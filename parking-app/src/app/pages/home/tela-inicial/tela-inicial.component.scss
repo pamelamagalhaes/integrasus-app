@@ -1,0 +1,367 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+.support-requests {
+  margin: 0 24px;
+  padding: 0;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+
+  &__header {
+    color: $grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 24px 8px;
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: $fs-medium;
+    font-weight: $fw-lighter;
+    margin: 0;
+    line-height: 40px;
+  }
+
+  &__content {
+    height: 427px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    @media (max-width: $small) {
+      height: auto;
+    }
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__table-row {
+    height: 64px;
+  }
+
+  &__table-row-title {
+    color: $dark-grey;
+    font-size: $fs-small;
+    font-weight: $fw-lighter;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 18.4px;
+  }
+
+  &__table-content {
+    color: $dark-grey;
+    font-size: $fs-small;
+    padding: 20px;
+  }
+
+  &__content-badge {
+    width: fit-content;
+    border-radius: 32px;
+    color: $white;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 13px;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: $fw-lighter;
+    line-height: 1.75;
+    letter-spacing: 0.45px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+mat-menu {
+  position: absolute;
+}
+
+.send {
+  background-color: $green;
+}
+
+.pending {
+  background-color: $yellow;
+}
+
+.declined {
+  background-color: $pink;
+}
+
+.settings-button {
+  box-shadow: none;
+  background-color: $settings-button-background-color;
+  color: $settings-button-color;
+
+  &:hover {
+    background-color: $blue;
+    color: $settings-button-color-hover;
+  }
+
+  &__icon {
+    color: inherit;
+  }
+}
+
+.settings-menu {
+  position: absolute;
+
+  &__item {
+    color: $dark-grey;
+
+    &:hover {
+      background-color: $settings-menu-background-color-hover;
+    }
+  }
+}
+
+
+
+
+.employee-table-wrapper {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 16px 16px 32px 16px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+
+  &__header {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: $small) {
+      padding: 0 16px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-wrapper {
+    height: 46px;
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    color: inherit;
+  }
+
+  &__search-input {
+    font-size: $fs-normal;
+    height: 32px;
+    border: 0;
+    border-bottom: 1px solid $grey;
+    outline: none;
+
+    @media (max-width: $small) {
+      width: 150px;
+    }
+
+    &:focus {
+      border-bottom: 2px solid $blue;
+    }
+  }
+
+  &__button {
+    box-shadow: none;
+    background-color: inherit;
+    width: 46px;
+    height: 46px;
+    color: $grey;
+
+    &:hover {
+      background-color: $black-08;
+      color: $blue;
+    }
+  }
+}
+
+.employee-table {
+  &__content {
+    @media (max-width: $small) {
+      overflow-x: scroll;
+    }
+  }
+
+  &__table {
+    width:100%;
+    box-shadow: none;
+
+    @media (max-width: $small) {
+      width: 200%;
+    }
+  }
+
+  &__table-checkbox {
+    width: 32px;
+    padding-left: 24px;
+  }
+
+  &__table-header {
+    padding: 1rem;
+    font-size: $fs-small;
+  }
+
+  &__table-body {
+    padding: 1rem;
+    font-size: $fs-small;
+  }
+}
+
+.auth-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  @media (max-width: $medium) {
+    flex-direction: column;
+  }
+
+  &__content-block {
+    width: 37%;
+    height: 100%;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media (max-width: $medium) {
+      width: 100%;
+    }
+  }
+
+  &__content-wrapper {
+    width: 45%;
+    height: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (max-width: $small) {
+      width: 70%;
+    }
+
+    @media (min-width: $medium) and (max-width: $large){
+      width: 45%;
+    }
+  }
+
+  &__group {
+    margin-top: 28px;
+  }
+
+  &__group-title {
+    font-size: 32px;
+    font-weight: $fw-normal;
+    margin-top: 37px;
+    letter-spacing: -0.7px;
+    text-align: center;
+    line-height: 37px;
+    color: $dark-grey;
+  }
+
+  &__group-sub-title {
+    font-size: $fs-large;
+    font-weight: $fw-normal;
+    margin-bottom: 60px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 24px;
+    color: $dark-grey;
+  }
+
+  &__google-button-wrapper {
+    margin-top: 32px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__google-button {
+    width: 95%;
+    padding: 0;
+    box-shadow: 0 0 11px 0 $shadow-white, 0 0 0 -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+  }
+
+  &__google-button-icon {
+    width: 20px;
+    margin-right: 16px;
+  }
+
+  &__border-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 32px 0;
+  }
+
+  &__border-line {
+    height: 1px;
+    width: 100%;
+    background-color: $light-grey;
+    opacity: 0.3;
+  }
+
+  &__border-title {
+    font-size: $fs-xs;
+    padding: 0 16px;
+    margin: 0;
+    color: $dark-grey
+  }
+
+  &__logo {
+    width: 63%;
+    height: 100%;
+    background-color: $blue;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $medium) {
+      display: none;
+    }
+  }
+
+  &__logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo-img {
+    margin-bottom: 50px;
+  }
+
+  &__logo-title {
+    font-size: 62px;
+    color: $white;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+    line-height: 62px;
+  }
+
+  &__footer-title {
+    color: $blue;
+    font-size: 10px;
+    opacity: 0.7;
+    a {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+}

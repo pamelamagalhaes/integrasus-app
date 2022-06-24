@@ -1,16 +1,15 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './pages/auth/guards';
-import { ListaComponent } from './pages/cadastro/medico/lista/lista.component';
+import { TelaInicialComponent } from './pages/home/tela-inicial/tela-inicial.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: 'home',
     pathMatch: 'full',
     canActivate: [AuthGuard],
-    component: DashboardPageComponent,
+    component: TelaInicialComponent,
   },
   {
     path: 'cadastro/medico',
@@ -19,6 +18,20 @@ const routes: Routes = [
       import('./pages/cadastro/medico/cadastro-medico.module').then(
         (m) => m.CadastroMedicoModule
       ),
+  },
+  {
+    path: 'cadastro/paciente',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/cadastro/paciente/cadastro-paciente.module').then(
+        (m) => m.CadastroPacienteModule
+      ),
+  },
+  {
+    path: 'fila',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/fila/fila.module').then((m) => m.FilaModule),
   },
   {
     path: 'typography',
@@ -77,4 +90,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

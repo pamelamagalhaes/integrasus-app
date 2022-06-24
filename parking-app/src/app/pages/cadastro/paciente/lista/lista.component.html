@@ -1,0 +1,75 @@
+<app-layout>
+
+  <mat-card class="employee-table-wrapper">
+    <mat-card-title class="employee-table-wrapper__header">
+      <p *ngIf="!isShowFilterInput" class="employee-table-wrapper__title">Lista Pacientes</p>
+      <div *ngIf="isShowFilterInput" class="employee-table-wrapper__search">
+        <div class="employee-table-wrapper__icon-wrapper">
+          <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+        </div>
+        <input matInput class="employee-table-wrapper__search-input" (keyup)="applyFilter($event)">
+        <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
+          <mat-icon class="employee-table-wrapper__icon">close</mat-icon>
+        </button>
+      </div>
+      <div class="">
+        <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
+          <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+        </button>
+        <button class="employee-table-wrapper__button" mat-mini-fab (click)="openDialog()">
+          <mat-icon class="employee-table-wrapper__icon">person</mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
+    <mat-card-content class="employee-table__content">
+      <table class="employee-table__table" mat-table [dataSource]="dataSource">
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="nome" >
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef > Nome </th>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.nome}} </td>
+        </ng-container>
+  
+        <!-- Company Column -->
+        <ng-container matColumnDef="email">
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Email </th>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+  
+        <!-- City Column -->
+        <ng-container matColumnDef="cpf">
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> CPF </th>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+        </ng-container>
+  
+        <!-- State Column -->
+        <ng-container matColumnDef="menu">
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Menu </th>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> 
+            <span>
+              <button class="settings-button" mat-mini-fab [matMenuTriggerFor]="settings">
+                <mat-icon class="settings-button__icon">more_vert</mat-icon>
+              </button>
+              <div class="settings-menu">
+                <mat-menu #settings="matMenu" xPosition="before">
+                  <button class="settings-menu__item" mat-menu-item  (click)="onEdit(element.cpf)">Editar</button>
+                  <button class="settings-menu__item" mat-menu-item (click)="onDelete(element.cpf)">Deletar</button>
+                  <button class="settings-menu__item" mat-menu-item (click)="onProntuario(element.cpf)">Prontuarios</button>
+                  <button class="settings-menu__item" mat-menu-item (click)="onExame(element.cpf)">Exames</button>
+                </mat-menu>
+              </div>
+            </span>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            (click)="selection.toggle(row)">
+        </tr>
+      </table>
+    </mat-card-content>
+    <div class="pagination">
+      <mat-paginator [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card>
+</app-layout>

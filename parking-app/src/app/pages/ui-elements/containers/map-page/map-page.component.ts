@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./map-page.component.scss']
 })
 export class MapPageComponent {
-  public lat = -37.813179;
-  public lng = 144.950259;
+  public lat = -25.441105;
+  public lng = -49.276855;
   public zoom = 12;
 }
