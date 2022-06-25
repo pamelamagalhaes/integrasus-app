@@ -7,24 +7,24 @@
     <mat-card class="typography-content__item-wrapper">
 
 
-      <div [formGroup]="cadastroForm" class="add-field">
-        <div class="example-container">
+      <div [formGroup]="cadastroForm" class="add-field" style="width: 100%;">
+        <div>
 
           <mat-card-title>
             <p>Dados Pessoais</p>
           </mat-card-title>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style="width: 40%;">
             <mat-label>Nome</mat-label>
             <input matInput name="name" formControlName="nome" placeholder="Nome" type="name" required>
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 40%;">
             <mat-label>E-mail</mat-label>
             <input matInput name="name" formControlName="email" placeholder="E-mail" type="name" required>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" >
+          <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 16%;">
             <mat-label>Genero</mat-label>
             <select formControlName="genero" matNativeControl required>
               <option value="1">Masculino</option>
@@ -33,31 +33,32 @@
           </mat-form-field>
         </div>
 
-        <div class="example-container">
+        <div>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Data Nacimento</mat-label>
+          <mat-form-field appearance="fill" style=" width: 40%;">
+            <mat-label>Data Nascimento</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="dataNascimento" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 40%;">
             <mat-label>Registro Profissional</mat-label>
-            <input matInput name="name" formControlName="registroProfissional" placeholder="Registro" type="name" required>
+            <input matInput name="name" formControlName="registroProfissional" placeholder="Registro" type="name"
+              required>
           </mat-form-field>
 
         </div>
       </div>
-      <div [formGroup]="enderecoForm" class="add-field">
-        <div class="example-container">
+      <div [formGroup]="enderecoForm">
+        <div>
 
           <mat-card-title>
             <p>Endereço</p>
           </mat-card-title>
 
           <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" style=" width: 20%;" >
               <mat-label>Cep</mat-label>
               <input matInput name="name" formControlName="cep" placeholder="Rua" type="name" required>
             </mat-form-field>
@@ -67,42 +68,43 @@
             </button>
           </div>
           <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill"style=" width: 36%;">
               <mat-label>Rua</mat-label>
               <input matInput name="name" formControlName="logradouro" placeholder="Rua" type="name" required>
             </mat-form-field>
-  
-            <mat-form-field appearance="fill">
+
+            <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 30%;">
               <mat-label>Bairro</mat-label>
               <input matInput name="name" formControlName="bairro" placeholder="Rua" type="name" required>
             </mat-form-field>
-  
-            <mat-form-field appearance="fill">
+
+            <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 30%;">
               <mat-label>Cidade</mat-label>
               <input matInput name="name" formControlName="localidade" placeholder="Rua" type="name" required>
             </mat-form-field>
           </div>
           <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" style=" width: 16%;">
               <mat-label>UF</mat-label>
               <input matInput name="name" formControlName="uf" placeholder="Rua" type="name" required>
             </mat-form-field>
-  
-            <mat-form-field appearance="fill">
+
+            <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 40%;">
               <mat-label>Número</mat-label>
               <input matInput name="name" formControlName="numero" placeholder="Número" type="name" required>
             </mat-form-field>
-  
-            <mat-form-field appearance="fill">
+
+            <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 40%;">
               <mat-label>Complemento</mat-label>
               <input matInput name="name" formControlName="complemento" placeholder="Complemento" type="name">
             </mat-form-field>
           </div>
         </div>
-        <div align="end" style="width: 618px;">
-          <button mat-raised-button  (click)="onSubmit()" class="next square" name="button" [disabled]="!cadastroForm.valid && !enderecoForm.valid">Salvar</button>
+        <div align="end">
+          <button mat-raised-button (click)="onSubmit()" class="next square" name="button"
+            [disabled]="!cadastroForm.valid && !enderecoForm.valid">Salvar</button>
         </div>
-        
+
       </div>
 
     </mat-card>

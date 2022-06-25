@@ -53,9 +53,9 @@
               <div class="settings-menu">
                 <mat-menu #settings="matMenu" xPosition="before">
                   <button class="settings-menu__item" mat-menu-item  (click)="onEdit(element.cpf)">Editar</button>
-                  <button class="settings-menu__item" mat-menu-item (click)="onDelete(element.cpf)">Deletar</button>
+                  <button class="settings-menu__item" mat-menu-item (click)="confirmDialog(element.cpf)">Deletar</button>
                   <button class="settings-menu__item" mat-menu-item (click)="onProntuario(element.cpf)">Prontuarios</button>
-                  <button class="settings-menu__item" mat-menu-item (click)="onExame(element.cpf)">Exames</button>
+                  <!-- <button class="settings-menu__item" mat-menu-item (click)="onExame(element.cpf)">Exames</button> -->
                 </mat-menu>
               </div>
             </span>

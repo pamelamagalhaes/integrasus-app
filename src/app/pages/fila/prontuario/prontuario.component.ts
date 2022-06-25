@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { routes } from 'src/app/consts';
 import { FilaService } from '../fila.service';
 import { ProntuarioModel } from '../model/prontuario.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-prontuario',
@@ -24,7 +25,12 @@ export class ProntuarioComponent implements OnInit {
 
   public editar = false;
 
-  constructor(private route: ActivatedRoute, public fb: FormBuilder, private service: FilaService, private router: Router,) { }
+  constructor(
+    private route: ActivatedRoute, 
+    public fb: FormBuilder, 
+    private service: FilaService, 
+    private router: Router,
+    private _location: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
@@ -82,6 +88,10 @@ export class ProntuarioComponent implements OnInit {
       alergias: ['', [Validators.required]],
       evolucao: ['', [Validators.required]],
     });
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   public onSubmit() {

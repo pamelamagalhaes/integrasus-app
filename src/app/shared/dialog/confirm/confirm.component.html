@@ -1,0 +1,14 @@
+<h3 mat-dialog-title>
+  {{title}}
+</h3>
+
+<div mat-dialog-content>
+  <p>{{message}}</p>
+</div>
+
+<section>
+  <div class="example-button-row" style="width: 100%;">
+    <button mat-button (click)="onDismiss()">Não</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Sim</button>
+  </div>
+</section>
