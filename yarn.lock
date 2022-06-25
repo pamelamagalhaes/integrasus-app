@@ -16207,11 +16207,6 @@
     "source-map" "~0.6.1"
     "source-map-support" "~0.5.12"
 
-"text-mask-addons@^3.8.0":
-  "integrity" "sha512-VSZSdc/tKn4zGxgpJ+uNBzoW1t472AoAFIlbw1K7hSNXz0DfSBYDJNRxLqgxOfWw1BY2z6DQpm7g0sYZn5qLpg=="
-  "resolved" "https://registry.npmjs.org/text-mask-addons/-/text-mask-addons-3.8.0.tgz"
-  "version" "3.8.0"
-
 "text-mask-core@^5.0.0":
   "integrity" "sha512-VfkCMdmRRZqXgQZFlDMiavm3hzsMzBM23CxHZsaeAYg66ZhXCNJWrFmnJwNy8KF9f74YvAUAuQenxsMCfuvhUw=="
   "resolved" "https://registry.npmjs.org/text-mask-core/-/text-mask-core-5.1.2.tgz"

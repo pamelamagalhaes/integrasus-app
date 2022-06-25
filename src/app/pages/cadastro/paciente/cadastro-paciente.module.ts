@@ -23,7 +23,6 @@ import { ListaProntuarioComponent } from './lista-prontuario/lista-prontuario.co
 import { ProntuarioComponent } from './prontuario/prontuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatBadgeModule } from '@angular/material/badge';
-import { TextMaskModule } from 'angular2-text-mask';
 
 const routes: Routes = [
   {
@@ -52,7 +51,6 @@ const routes: Routes = [
     ProntuarioComponent],
   imports: [
     MatMenuModule,
-    TextMaskModule,
     MatTableModule,
     MatBadgeModule,
     HttpClientModule,
