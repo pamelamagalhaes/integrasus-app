@@ -5,11 +5,15 @@
       <mat-icon *ngIf="!isMenuOpened" class="header__title-button-icon">menu</mat-icon>
       <mat-icon *ngIf="isMenuOpened" class="header__title-button-icon">arrow_back</mat-icon>
     </button>
+
     <img class="auth-page__logo-img" src="./assets/auth/logobranco.png" alt="logo" width="50px" left="20px">
-    <!--<h6 class="header__title-text">INTEGRASUS</h6>-->
+    
   </div>
 
   <div class="header-toolbar">
+    <button class="header__title-button" mat-mini-fab (click)="signOut()">
+      <mat-icon *ngIf="isMenuOpened" class="header__title-button-icon">logout</mat-icon>
+    </button>
     <!-- <a
       mat-stroked-button
       color="error"
