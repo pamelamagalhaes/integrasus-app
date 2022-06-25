@@ -117,7 +117,18 @@
   }
   
   
-  
+  .arrow_back{
+    color: white;
+    box-shadow: none;
+
+    &:hover {
+      background-color: $header-button-background-color-hover;
+    }
+
+    @media (max-width: $small) {
+      margin-top: 0;
+    }
+  }
   
   .employee-table-wrapper {
     padding-left: 0;
@@ -186,6 +197,7 @@
       }
     }
   }
+  
   
   .example-full-width {
     width: 99%;
