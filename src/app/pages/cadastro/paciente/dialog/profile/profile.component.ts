@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { CustomValidators } from 'src/app/consts/customer-validators';
+import { utilsBr } from 'js-brasil';
 import { DialogData } from 'src/app/pages/fila/component/fila.components';
 import { CadastroPacienteService } from '../../cadastro-paciente.service';
 import { CadastroPacienteModel } from '../../model/cadastro-paciente.model';
@@ -17,6 +16,8 @@ export class ProfileComponent implements OnInit {
   public cadastroForm: FormGroup;
   public enderecoForm: FormGroup;
   public editar = false;
+
+  public MASKS = utilsBr.MASKS;
 
   constructor(
     public service: CadastroPacienteService,

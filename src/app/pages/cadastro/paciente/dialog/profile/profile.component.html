@@ -21,7 +21,7 @@
 
           <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 40%;">
             <mat-label>E-mail</mat-label>
-            <input matInput name="name" formControlName="email" placeholder="E-mail" type="name" required>
+            <input matInput name="name" formControlName="email" placeholder="E-mail" type="name"  required>
           </mat-form-field>
 
           <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 16%;">
@@ -44,7 +44,7 @@
 
           <mat-form-field appearance="fill" style=" margin-left: 2%;  width: 40%;">
             <mat-label>CPF</mat-label>
-            <input matInput name="name" formControlName="cpf" placeholder="Registro" type="name" required>
+            <input matInput name="name" formControlName="cpf" placeholder="Registro" type="name" required [textMask]="{mask: MASKS.cpf.textMask}">
           </mat-form-field>
 
         </div>
