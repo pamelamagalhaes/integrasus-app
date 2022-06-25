@@ -5,7 +5,6 @@ import * as moment from 'moment';
 import { FilaService } from '../../fila.service';
 import { ProntuarioModel } from '../../model/prontuario.model';
 import {v4 as uuidv4} from 'uuid';
-import { utilsBr } from 'js-brasil';
 
 export interface DialogData {
   animal: string;
@@ -19,7 +18,6 @@ export interface DialogData {
 })
 export class TriagemDialogComponent implements OnInit {
 
-  public MASKS = utilsBr.MASKS;
 
   public cadastroForm: FormGroup;
   public queixaForm: FormGroup;

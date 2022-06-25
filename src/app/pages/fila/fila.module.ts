@@ -22,8 +22,6 @@ import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProntuarioComponent } from './prontuario/prontuario.component';
 import { MatBadgeModule } from '@angular/material/badge';
-import { NgBrazil } from 'ng-brazil';
-import { TextMaskModule } from 'angular2-text-mask';
 
 
 const routes: Routes = [
@@ -57,7 +55,6 @@ const routes: Routes = [
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    TextMaskModule,
     SharedModule,
     RouterModule.forChild(routes),
   ],
