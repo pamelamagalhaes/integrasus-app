@@ -1,6 +1,13 @@
 <app-layout>
-  <mat-toolbar class="page-header" role="heading">
-    <h1>Prontuário</h1>
+  <mat-toolbar role="heading" style="width: 40%;">
+    <div class="" style="width: 10%;">
+      <button class="employee-table-wrapper__button" mat-mini-fab (click)="backClicked()">
+        <mat-icon class="employee-table-wrapper__icon">arrow_back</mat-icon>
+      </button>
+    </div>
+    <div class="" style="margin-left: 4%; width: 20%;" align="start">
+      <h1>Prontuário</h1>
+    </div>
   </mat-toolbar>
 
   <mat-card-content class="typography-content">
@@ -9,7 +16,7 @@
         <mat-card-title>
           <p>Dados Pessoais</p>
         </mat-card-title>
-        <div style="width: 100%;">
+        <div >
           <div [formGroup]="cadastroForm">
 
             <mat-form-field appearance="fill" style="width: 36%;">

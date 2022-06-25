@@ -40,8 +40,15 @@
         <!-- City Column -->
         <ng-container matColumnDef="status">
           <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Status </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.status}} </td>
+
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element">
+            <span *ngIf="element.status == 1" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-muito-urgente"></span>
+            <span *ngIf="element.status == 2" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-urgente"></span>
+            <span *ngIf="element.status == 3" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-pouco-urgente"></span>
+            <span *ngIf="element.status == 4" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-nao-urgente"></span>
+            </td>
         </ng-container>
+
   
         <!-- State Column -->
         <ng-container matColumnDef="menu">

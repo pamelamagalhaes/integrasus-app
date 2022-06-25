@@ -218,3 +218,27 @@ mat-menu {
     font-size: $fs-small;
   }
 }
+
+.color-muito-urgente {
+  .mat-badge-content {
+    background: red;
+  }
+}
+
+.color-urgente {
+  .mat-badge-content {
+    background: #FF6400;
+  }
+}
+
+.color-pouco-urgente {
+  .mat-badge-content {
+    background: #028A0F;
+  }
+}
+
+.color-nao-urgente {
+  .mat-badge-content {
+    background: #60CDF1;
+  }
+}

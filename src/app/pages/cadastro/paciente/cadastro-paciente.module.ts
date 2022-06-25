@@ -22,6 +22,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ListaProntuarioComponent } from './lista-prontuario/lista-prontuario.component';
 import { ProntuarioComponent } from './prontuario/prontuario.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const routes: Routes = [
   {
@@ -51,6 +52,7 @@ const routes: Routes = [
   imports: [
     MatMenuModule,
     MatTableModule,
+    MatBadgeModule,
     HttpClientModule,
     CommonModule,
     MatToolbarModule,
