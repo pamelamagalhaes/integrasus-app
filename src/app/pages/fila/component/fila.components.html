@@ -23,30 +23,37 @@
     </mat-card-title>
     <mat-card-content class="employee-table__content">
       <table class="employee-table__table" mat-table [dataSource]="dataSource">
-  
-        
+
+
         <!-- Company Column -->
         <ng-container matColumnDef="dataAtendimento">
           <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Data </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.dataAtendimento | date: 'medium'}} </td>
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.dataAtendimento | date:
+            'medium'}} </td>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="nome" >
-          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef > Nome </th>
+        <ng-container matColumnDef="nome">
+          <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Nome </th>
           <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.nome }} </td>
         </ng-container>
-        
+
         <!-- City Column -->
         <ng-container matColumnDef="status">
           <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Status </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.status}} </td>
+
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element">
+            <span *ngIf="element.status == 1" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-muito-urgente"></span>
+            <span *ngIf="element.status == 2" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-urgente"></span>
+            <span *ngIf="element.status == 3" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-pouco-urgente"></span>
+            <span *ngIf="element.status == 4" matBadge="{{element.status}}" matBadgeOverlap="false" class="color-nao-urgente"></span>
+            </td>
         </ng-container>
-  
+
         <!-- State Column -->
         <ng-container matColumnDef="menu">
           <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Menu </th>
-          <td class="employee-table__table-body" mat-cell *matCellDef="let element"> 
+          <td class="employee-table__table-body" mat-cell *matCellDef="let element">
             <span>
               <button class="settings-button" mat-mini-fab [matMenuTriggerFor]="settings">
                 <mat-icon class="settings-button__icon">more_vert</mat-icon>
@@ -54,16 +61,15 @@
               <div class="settings-menu">
                 <mat-menu #settings="matMenu" xPosition="before">
                   <button class="settings-menu__item" mat-menu-item (click)="onProntuario(element.id)">Atender</button>
-                  <button class="settings-menu__item" mat-menu-item (click)="onDelete(element.id)">Remover</button>
+                  <button class="settings-menu__item" mat-menu-item (click)="confirmDialog(element.id)">Remover</button>
                 </mat-menu>
               </div>
             </span>
           </td>
         </ng-container>
-  
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="selection.toggle(row)">
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
         </tr>
       </table>
     </mat-card-content>

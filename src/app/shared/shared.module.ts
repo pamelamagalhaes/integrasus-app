@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SettingsMenuComponent } from './ui-elements/settings-menu/settings-menu.component';
 import { DateMenuComponent } from './ui-elements/date-menu/date-menu.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ConfirmComponent } from './dialog/confirm/confirm.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LayoutComponent } from './layout/layout.component';
     FooterComponent,
     SettingsMenuComponent,
     DateMenuComponent,
-    LayoutComponent
+    LayoutComponent,
+    ConfirmComponent
   ],
   imports: [
     HeaderModule,
@@ -43,7 +45,8 @@ import { LayoutComponent } from './layout/layout.component';
     FooterComponent,
     SettingsMenuComponent,
     DateMenuComponent,
-    LayoutComponent
+    LayoutComponent,
+    ConfirmComponent
   ]
 })
 export class SharedModule { }

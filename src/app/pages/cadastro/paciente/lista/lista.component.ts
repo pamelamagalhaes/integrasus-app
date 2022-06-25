@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { routes } from 'src/app/consts';
+import { ConfirmComponent, ConfirmDialogModel } from 'src/app/shared/dialog/confirm/confirm.component';
 import { CadastroPacienteService } from '../cadastro-paciente.service';
 import { ProfileComponent } from '../dialog/profile/profile.component';
 import { CadastroPacienteModel } from '../model/cadastro-paciente.model';
@@ -53,6 +54,23 @@ export class ListaPacienteComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  confirmDialog(cpf: string): void {
+    const message = `Deseja remover esse paciente?`;
+
+    const dialogData = new ConfirmDialogModel("Confirmação", message);
+
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      maxWidth: "500px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult){
+        this.onDelete(cpf)
+      }
+    });
+  }
+  
   public onDelete(cpf: string) {
     this.service.delete(cpf);
 

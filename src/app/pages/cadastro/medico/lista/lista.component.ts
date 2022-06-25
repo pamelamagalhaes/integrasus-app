@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routes } from 'src/app/consts';
+import { ConfirmComponent, ConfirmDialogModel } from 'src/app/shared/dialog/confirm/confirm.component';
 import { CadastroMedicoService } from '../cadastro-medico.service';
 import { ProfileComponent } from '../dialog/profile/profile.component';
 import { CadastroMedicoModel } from '../model/cadastro-medico.model';
@@ -84,6 +85,22 @@ export class ListaComponent implements OnInit {
     this.dataSource = new MatTableDataSource<CadastroMedicoModel>(this.supportRequestData);
   }
 
+  confirmDialog(crm: string): void {
+    const message = `Deseja remover esse médico?`;
+
+    const dialogData = new ConfirmDialogModel("Confirmação", message);
+
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      maxWidth: "500px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult){
+        this.onDelete(crm)
+      }
+    });
+  }
 
   public onDelete(crm: string) {
     this.service.delete(crm);

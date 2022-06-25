@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routes } from 'src/app/consts';
+import { ConfirmComponent, ConfirmDialogModel } from 'src/app/shared/dialog/confirm/confirm.component';
 import { TriagemDialogComponent } from '../dialog/triagem-dialog/triagem-dialog.component';
 import { FilaService } from '../fila.service';
 import { ProntuarioModel } from '../model/prontuario.model';
@@ -63,6 +64,23 @@ export class FilaComponent implements OnInit {
     this.router.navigate([this.routers.PRONTUARIO, cpf], { relativeTo: this.route });
   }
 
+  confirmDialog(id: string): void {
+    const message = `Deseja remover esse paciente da fila?`;
+
+    const dialogData = new ConfirmDialogModel("Confirmação", message);
+
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      maxWidth: "500px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult){
+        this.onDelete(id)
+      }
+    });
+  }
+  
   public onDelete(id: string) {
     this.service.delete(id);
 
